@@ -23,10 +23,13 @@ end
 gem 'jquery-rails'
 
 gem 'backbone-on-rails'
+gem 'twitter-bootstrap-rails'
 group :development, :test do
   gem 'debugger'
   gem 'jasminerice'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'guard-rspec'
+  gem "guard-rspec"
+  gem "guard-jasmine"
 end
+

@@ -1,0 +1,7 @@
+<form id='new_link'>
+  <input type='text' id='new_link_url' placeholder='url' />
+  <input type='submit' id='new_link_submit' value="Share">
+</form>
+
+<ul id='links'></ul>
+
