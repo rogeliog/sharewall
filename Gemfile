@@ -31,5 +31,6 @@ group :development, :test do
   gem 'capybara'
   gem "guard-rspec"
   gem "guard-jasmine"
+  gem 'database_cleaner'
 end
 
