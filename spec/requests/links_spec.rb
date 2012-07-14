@@ -19,14 +19,25 @@ describe 'User Link wall' do
     end
   end
   it 'When a link is clicked the count it updated', js: true do
-    Link.create! url: 'http://heroku.com'
+    l = Link.new url: 'http://localhost:3000'
+    l.save validate: false
     visit root_path
     within('#links .count') {page.should have_content('0')}
-    click_on 'http://heroku.com'
+    click_on 'http://localhost:3000'
     visit root_path
     within('#links .count') {page.should have_content('1')}
   end
-  it 'The links can view viewed on a recent order'
+
+  it 'The links can view viewed on a recent order', js: true do
+    link_1 = Link.create! url: 'http://twitter.com', click_count: 20
+    link_2 = Link.create! url: 'http://github.com', click_count: 15
+    link_3 = Link.create! url: 'http://peepcode.com', click_count: 30
+    visit root_path
+    within("#links") do
+      actual_order = page.all('.link a').collect(&:text)
+      actual_order.should == [link_3.url, link_2.url, link_1.url]
+    end
+  end
   it 'The links can view viewed on a popular order'
 
 end
