@@ -34,10 +34,23 @@ describe 'User Link wall' do
     link_3 = Link.create! url: 'http://peepcode.com', click_count: 30
     visit root_path
     within("#links") do
-      actual_order = page.all('.link a').collect(&:text)
+      actual_order = page.all('.link a').collect(&:text).map{|link| link.gsub(/\n\d+/, '')}
       actual_order.should == [link_3.url, link_2.url, link_1.url]
     end
   end
-  it 'The links can view viewed on a popular order'
+  it 'The links can view viewed on a popular order', js: true do
+    link_1 = Link.create! url: 'http://twitter.com', click_count: 20
+    link_2 = Link.create! url: 'http://github.com', click_count: 15
+    link_3 = Link.create! url: 'http://peepcode.com', click_count: 30
+    visit root_path
+    click_on 'Popular'
+    within("#links") do
+      actual_order = page.all('.link a').collect(&:text).map{|link| link.gsub(/\n\d+/, '')}
+      actual_order.should == [link_3.url, link_1.url, link_2.url]
+    end
+    
+  end
+
+  it 'User can change between recent and popular order'
 
 end

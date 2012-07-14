@@ -8,5 +8,5 @@ class Wall.Routers.Links extends Backbone.Router
 
   index: ->
     view = new Wall.Views.LinksIndex(collection: @collection)
-    $('#wrapper').html(view.render().el)
+    $('#container').html(view.render().el)
 

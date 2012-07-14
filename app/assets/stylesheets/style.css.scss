@@ -9,11 +9,12 @@ body{
   padding-top:0px;
 }
 #wrapper{
-  width:400px;
   margin:auto;
+  float: none;
   margin-bottom:20px;
   background:#fff;
   padding:20px;
+  margin-top:-3px;
   padding-top:20px;
   border:1px solid #aaa;
   -webkit-border-bottom-right-radius: 15px;
@@ -27,17 +28,20 @@ body{
   -webkit-box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.40);
 
 }
-
-#preview{
-  display:none;
-  width:400px;
-  position: absolute;
-  top: 20px;
-}
 h1{
   text-align:center;
   padding-bottom:10px;
 }
-h2{
-  color: #aaa;
+#order_selector{
+  margin-left: 0;
+  margin-bottom: 15px;
+  .btn{
+    width:50%;
+  }
 }
+
+.center{
+ margin:0 auto;
+ float:none;
+}
+
