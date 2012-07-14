@@ -18,7 +18,6 @@ describe 'Links View', ->
 
       afterEach ->
         window.Wall.Views.Link.restore()
-        #@spies.push sinon.spy(@view, 'prependLink')
 
       it 'Returns the view object', ->
         expect(@view.render()).toEqual(@view)

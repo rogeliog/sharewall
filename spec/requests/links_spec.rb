@@ -18,7 +18,14 @@ describe 'User Link wall' do
       page.should have_content("heroku")
     end
   end
-  it 'When a link is clicked the count it updated'
+  it 'When a link is clicked the count it updated', js: true do
+    Link.create! url: 'http://heroku.com'
+    visit root_path
+    within('#links .count') {page.should have_content('0')}
+    click_on 'http://heroku.com'
+    visit root_path
+    within('#links .count') {page.should have_content('1')}
+  end
   it 'The links can view viewed on a recent order'
   it 'The links can view viewed on a popular order'
 

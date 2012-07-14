@@ -1,1 +1,2 @@
-<%= @link.get('url')%>
+<a href="#" ><%= @link.get('url')%></a>
+<span class='count'><%= @link.get('click_count')%></span>

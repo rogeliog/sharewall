@@ -13,11 +13,9 @@ class LinksController < ApplicationController
     respond_with Link.create(params[:link])
   end
 
-  def update
-    respond_with Link.update(params[:id], params[:link])
-  end
-
-  def destroy
-    respond_with Link.destroy(params[:id])
+  def add_click
+    link = Link.find(params[:id])
+    link.add_click!
+    respond_with link
   end
 end
