@@ -1,0 +1,47 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.embed.ly:80/1/oembed?key=06a1d33ad3db472ea95b7ac92683e810&url=http%3A%2F%2Fheroku.com&maxwidth=500
+    body: 
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 03 Aug 2012 20:09:38 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '460'
+      connection:
+      - keep-alive
+      x-embedly-from-cache:
+      - '0'
+      access-control-max-age:
+      - '86400'
+      server:
+      - TornadoServer/2.1
+      etag:
+      - ! '"92292e7341f9602dad671308229bc6bccbf344b9"'
+      x-embedly-process-time:
+      - '51'
+      access-control-allow-origin:
+      - ! '*'
+      access-control-allow-methods:
+      - GET, OPTIONS
+      x-embedly-host:
+      - api16
+    body: ! '{"provider_url": "http://www.heroku.com", "description": "Run and scale
+      any type of app. Run any web or background process with any web framework or
+      worker type. Get direct, granular control over your app''s workloads. Scale
+      distributed processes effortlessly with a single command. Easily scale to millions
+      of users.", "title": "Heroku | Cloud Application Platform", "url": "http://www.heroku.com/",
+      "version": "1.0", "provider_name": "Heroku", "type": "link"}'
+    http_version: '1.1'

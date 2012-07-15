@@ -1,0 +1,49 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.embed.ly:80/1/oembed?key=06a1d33ad3db472ea95b7ac92683e810&url=http%3A%2F%2Fgithub.com&maxwidth=500
+    body: 
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 03 Aug 2012 20:08:51 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '638'
+      connection:
+      - keep-alive
+      x-embedly-from-cache:
+      - '0'
+      access-control-max-age:
+      - '86400'
+      server:
+      - TornadoServer/2.1
+      etag:
+      - ! '"daeceef7a0a53c5452af59e6dee1e1d3c5b31823"'
+      x-embedly-process-time:
+      - '57'
+      access-control-allow-origin:
+      - ! '*'
+      access-control-allow-methods:
+      - GET, OPTIONS
+      x-embedly-host:
+      - api05
+    body: ! '{"provider_url": "https://github.com", "description": "Format Text Headers
+      # This is an tag ## This is an tag ###### This is an tag Text styles *This text
+      will be italic* _This will also be italic_ **This text will be bold** __This
+      will also be bold__ *You **can** combine them* Lists Unordered * Item 1 * Item
+      2 * Item 2a * Item 2b Ordered 1.", "title": "GitHub \u00b7 Social Coding", "url":
+      "https://github.com/", "thumbnail_width": 300, "thumbnail_url": "https://a248.e.akamai.net/assets.github.com/images/modules/home/logos/twitter.png?1340303965",
+      "version": "1.0", "provider_name": "Github", "type": "link", "thumbnail_height":
+      300}'
+    http_version: '1.1'

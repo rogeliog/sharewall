@@ -1,0 +1,47 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.embed.ly:80/1/oembed?key=06a1d33ad3db472ea95b7ac92683e810&url=http%3A%2F%2Fgoogle.com&maxwidth=500
+    body: 
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sat, 04 Aug 2012 20:16:58 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '456'
+      connection:
+      - keep-alive
+      x-embedly-from-cache:
+      - '0'
+      access-control-max-age:
+      - '86400'
+      server:
+      - TornadoServer/2.1
+      etag:
+      - ! '"ebdc8f0f3605358e969bbb802a2510d2e611a7d3"'
+      x-embedly-process-time:
+      - '43'
+      access-control-allow-origin:
+      - ! '*'
+      access-control-allow-methods:
+      - GET, OPTIONS
+      x-embedly-host:
+      - api15
+    body: ! '{"provider_url": "http://www.google.com", "description": "Search the
+      world''s information, including webpages, images, videos and more. Google has
+      many special features to help you find exactly what you''re looking for.", "title":
+      "Google", "url": "http://www.google.com", "thumbnail_width": 530, "thumbnail_url":
+      "http://www.google.com/logos/2012/pole_vault-2012-hp.jpg", "version": "1.0",
+      "provider_name": "Google", "type": "link", "thumbnail_height": 207}'
+    http_version: '1.1'

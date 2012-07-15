@@ -7,7 +7,7 @@ class CreateLinks < ActiveRecord::Migration
       t.string :thumbnail_url
       t.string :provider_url
       t.string :provider_name
-      t.string :type
+      t.string :link_type
       t.text :html
       t.text   :description
       t.timestamps

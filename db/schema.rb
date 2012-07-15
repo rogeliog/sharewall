@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20120709024722) do
     t.string   "thumbnail_url"
     t.string   "provider_url"
     t.string   "provider_name"
-    t.string   "type"
+    t.string   "link_type"
     t.text     "html"
     t.text     "description"
     t.datetime "created_at",                   :null => false

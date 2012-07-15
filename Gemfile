@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source :rubygems
 
 gem 'rails', '3.2.5'
 
@@ -24,6 +24,8 @@ gem 'jquery-rails'
 
 gem 'backbone-on-rails'
 gem 'twitter-bootstrap-rails'
+gem 'rest-client'
+
 group :development, :test do
   gem 'debugger'
   gem 'jasminerice'
@@ -32,5 +34,8 @@ group :development, :test do
   gem "guard-rspec"
   gem "guard-jasmine"
   gem 'database_cleaner'
+  gem 'vcr'
+  gem 'fakeweb'
+  gem 'parallel_tests'
 end
 

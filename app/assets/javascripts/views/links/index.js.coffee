@@ -23,10 +23,8 @@ class Wall.Views.LinksIndex extends Backbone.View
   createLink: (event) ->
     event.preventDefault() if event
     attributes = url: $('#new_link_url' ).val()
-    @collection.create attributes,
-      wait: true
-      success: ->
-       $('#new_link_url').val('') 
+    $("#links").prepend("<li id='loading'><a>Loading...</a></li>")
+    @collection.createWith attributes
 
   sortByPopularity: (event) ->
     event.preventDefault() if event

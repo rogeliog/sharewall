@@ -14,4 +14,13 @@ class Wall.Collections.Links extends Backbone.Collection
   by: (attr) ->
     @comparator = (link) -> link.get("#{attr}")
 
+  createWith: (attrs) ->
+    @create attrs,
+      wait: true
+      success: ->
+        $("#loading").remove()
+        $('#new_link_url').val('') 
+      error: ->
+        $("#loading").remove()
+
 

@@ -1,0 +1,50 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.embed.ly:80/1/oembed?key=06a1d33ad3db472ea95b7ac92683e810&url=http%3A%2F%2F37signals.com%2Fsvn%2Fposts%2F3203-we-cant-get-this-damn-audiovideo-conferencing-thing-to-work&maxwidth=500
+    body: 
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sat, 04 Aug 2012 19:54:51 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '721'
+      connection:
+      - keep-alive
+      x-embedly-from-cache:
+      - !binary ""
+      access-control-max-age:
+      - '86400'
+      server:
+      - TornadoServer/2.1
+      etag:
+      - ! '"58f0dd6d195a482bf9a28f0f8b4a565eaece313e"'
+      x-embedly-process-time:
+      - '555'
+      access-control-allow-origin:
+      - ! '*'
+      access-control-allow-methods:
+      - GET, OPTIONS
+      x-embedly-host:
+      - api06
+    body: ! '{"provider_url": "http://37signals.com", "description": "or: It''s complicated
+      until you make it simple We''re smart people - we''ve been making collaboration
+      software for the better part of a decade now. We live to connect people & information,
+      no matter where in the world they are. We''ve been having a problem that''s
+      got us all scratching our heads.", "title": "We can''t get this damn audio/video
+      conferencing thing to work - (37signals)", "url": "http://37signals.com/svn/posts/3203-we-cant-get-this-damn-audiovideo-conferencing-thing-to-work",
+      "thumbnail_width": 60, "thumbnail_url": "http://37signals.com/images/logo_bigmark.png",
+      "version": "1.0", "provider_name": "37signals", "type": "link", "thumbnail_height":
+      60}'
+    http_version: '1.1'

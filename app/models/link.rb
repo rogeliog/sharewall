@@ -6,7 +6,7 @@ class Link < ActiveRecord::Base
   validates :url, presence: true, uniqueness: true, format: {with: /^(http(s?):\/\/(www\.)?|(www\.)?)\w+\.\D{2,}.*$/i }
 
   before_validation :format_url, if: :url?
-  before_create :set_attribures_from_json
+  before_validation :set_attribures_from_json, on: :create
 
   def add_click!
     increment! :click_count
@@ -24,11 +24,16 @@ class Link < ActiveRecord::Base
   def set_attribures_from_json 
     json = JSON.parse(fetch_url_info)
     attrs.each {|a| self.public_send "#{a}=".to_sym, json[a]}
+    special_attr.each { |k,v| self.public_send "#{v}=".to_sym, json[k] }
   end
 
   private
 
   def attrs
-    [ 'provider_url', 'provider_name', 'type', 'title', 'description', 'url', 'thumbnail_url', 'provider_name', 'html']
+    [ 'provider_url', 'provider_name', 'title', 'description', 'url', 'thumbnail_url', 'provider_name', 'html']
+  end
+
+  def special_attr
+    {'type' => 'link_type'}
   end
 end

@@ -1,0 +1,49 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.embed.ly:80/1/oembed?key=06a1d33ad3db472ea95b7ac92683e810&url=http%3A%2F%2Fpeepcode.com&maxwidth=500
+    body: 
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 03 Aug 2012 20:15:29 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '560'
+      connection:
+      - keep-alive
+      x-embedly-from-cache:
+      - '0'
+      access-control-max-age:
+      - '86400'
+      server:
+      - TornadoServer/2.1
+      etag:
+      - ! '"94d7466adc26325ec488e27e7485ebc50a79f1c9"'
+      x-embedly-process-time:
+      - '57'
+      access-control-allow-origin:
+      - ! '*'
+      access-control-allow-methods:
+      - GET, OPTIONS
+      x-embedly-host:
+      - api08
+    body: ! '{"provider_url": "https://peepcode.com", "description": "Learn What''s
+      Hot Get the newest and hottest development resources from PeepCode first, well
+      before they''re covered in books. Vet new approaches: our one-hour screencasts
+      give you a deep but concise overview of tools. Your Way PeepCode''s tutorials
+      are downloadable, so you can watch the way you want.", "title": "PeepCode |
+      Programming and Development Tutorial Screencasts for Web Developers and Alpha
+      Geeks", "url": "https://peepcode.com/", "version": "1.0", "provider_name": "Peepcode",
+      "type": "link"}'
+    http_version: '1.1'

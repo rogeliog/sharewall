@@ -3,11 +3,14 @@ require 'rspec/autorun'
 require 'spec_helper'
  
 describe Link do
-  let(:link){Link.new url: 'http://google.com'}
+  let(:link){Link.create url: 'http://google.com'}
+  let!(:response){
+    "{\"provider_url\": \"http://www.google.com\", \"description\": \"Search the world's information, including webpages, images, videos and more. Google has many special features to help you find exactly what you're looking for.\", \"title\": \"Google\", \"url\": \"http://www.google.com\", \"thumbnail_width\": 275, \"thumbnail_url\": \"http://www.google.com/intl/en_ALL/images/srpr/logo1w.png\", \"version\": \"1.0\", \"provider_name\": \"Google\", \"type\": \"link\", \"thumbnail_height\": 95}"
+  }
+  before { Oembed.stub!(:fetch) { response } } 
   describe 'Validations' do
     it 'is valid with the proper attributes' do
       link.valid?
-      puts link.errors.full_messages
       link.should be_valid
     end
     it 'is invalid without a url' do
@@ -15,8 +18,7 @@ describe Link do
       link.should_not be_valid
     end
     it 'is invalid with a duplicated url' do
-      Link.create url: link.url
-      link.should_not be_valid
+      Link.create(url: link.url).should_not be_valid
     end
     it 'is invalid badly formated url' do
       link.url = "notvlaiss"
@@ -63,9 +65,6 @@ describe Link do
       it 'Does not set any attributes'
     end
     context 'When false fetch_url_info' do
-      let!(:response){
-      "{\"provider_url\": \"http://www.google.com\", \"description\": \"Search the world's information, including webpages, images, videos and more. Google has many special features to help you find exactly what you're looking for.\", \"title\": \"Google\", \"url\": \"http://www.google.com\", \"thumbnail_width\": 275, \"thumbnail_url\": \"http://www.google.com/intl/en_ALL/images/srpr/logo1w.png\", \"version\": \"1.0\", \"provider_name\": \"Google\", \"type\": \"link\", \"thumbnail_height\": 95}"
-      }
       let!(:json){JSON.parse response}
       it 'Sets the title' do
         link.should_receive(:fetch_url_info){response}
@@ -82,10 +81,10 @@ describe Link do
         link.set_attribures_from_json
         link.provider_name.should == "Google"
       end
-      it 'Sets the type' do
+      it 'Sets the link_type' do
         link.should_receive(:fetch_url_info){response}
         link.set_attribures_from_json
-        link.type.should == "link"
+        link.link_type.should == "link"
       end
       it 'Sets the description' do
         link.should_receive(:fetch_url_info){response}
