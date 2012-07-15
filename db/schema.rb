@@ -15,9 +15,16 @@ ActiveRecord::Schema.define(:version => 20120709024722) do
 
   create_table "links", :force => true do |t|
     t.string   "url"
-    t.integer  "click_count", :default => 0
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.integer  "click_count",   :default => 0
+    t.string   "title"
+    t.string   "thumbnail_url"
+    t.string   "provider_url"
+    t.string   "provider_name"
+    t.string   "type"
+    t.text     "html"
+    t.text     "description"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
 end

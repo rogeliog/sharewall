@@ -1,3 +1,3 @@
 #= require application
-#= require_tree ./lib/
+#= require_tree ./support/
 #= require_tree .
