@@ -8,6 +8,8 @@ class Link < ActiveRecord::Base
   before_validation :format_url, if: :url?
   before_validation :set_attribures_from_json, on: :create
 
+  default_scope order('created_at')
+
   def add_click!
     increment! :click_count
   end
