@@ -9,6 +9,7 @@ body{
   padding-top:0px;
 }
 #wrapper{
+  position:relative;
   margin:auto;
   float: none;
   margin-bottom:20px;
@@ -17,7 +18,7 @@ body{
   margin-top:-3px;
   min-width:370px;
   width:370px;
-  padding-top:20px;
+  padding-top:50px;
   border:1px solid #aaa;
   -webkit-border-bottom-right-radius: 15px;
   -webkit-border-bottom-left-radius: 15px;
@@ -41,11 +42,22 @@ h1{
 #order_selector{
   margin-left: 0;
   margin-bottom: 15px;
+  width:100%;
   .btn{
     width:50%;
   }
 }
 
+#signin{
+  position:absolute;
+  top:0;
+  right:21px;
+}
+#signout{
+  position:absolute;
+  top:0px;
+  right:21px;
+}
 .center{
  margin:0 auto;
  float:none;

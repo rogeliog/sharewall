@@ -7,15 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<script type="text/javascript">
+  window.current_user_id = ("<%= session[:user_id]%>");
+  window.current_user_name = ("<%= session[:user_name]%>");
+</script>
 
   <div id='wrapper' class='span4'>
-    <h1>Share Wall</h1>
-    <% if current_user %>
-      Signed in as <%= current_user.name %>!
-      <%= link_to "Sign out", signout_path %>
-    <% else %>
-      <%= link_to "Sign in with Github", "/auth/github" %>
-    <% end %>
     <div id='container'>
       <%= yield %>
     </div>

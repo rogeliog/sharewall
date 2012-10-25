@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
   respond_to :json
+  before_filter :requires_user, only: [:create]
 
   def index
     respond_with Link.all
