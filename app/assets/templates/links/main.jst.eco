@@ -1,15 +1,14 @@
 <form id='new_link'>
   <div class="controls">
     <div class="input-append">
-      <input type='text' id='new_link_url' class='span3' placeholder='url' />
+      <input type='text' id='new_link_url' placeholder='url' />
       <input type='submit' id='new_link_submit' class='btn btn-primary' value="Share it now!">
     </div>
   </div>
 </form>
 
 <div class='span4 btn-group' id='order_selector' data-toggle='buttons-radio'>
-<button class='btn ' id='popular_trigger'>Popular</button>
-<button class='btn ' id='recent_trigger'>Recent</button>
+<button class='btn sorter' id='popular_trigger'>Popular</button>
+<button class='btn sorter active' id='recent_trigger'>Recent</button>
 </div>
-<ul id='links' class='nav nav-tabs nav-stacked'></ul>
-
+<div id='links-wrapper'></div>

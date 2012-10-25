@@ -4,9 +4,10 @@ class Wall.Routers.Links extends Backbone.Router
 
   initialize: ->
     @collection = new Wall.Collections.Links()
-    @collection.fetch()
+    @collection.reset($('#bootstrap-links').data('links'))
+    
 
   index: ->
-    view = new Wall.Views.LinksIndex(collection: @collection)
+    view = new Wall.Views.Main(collection: @collection)
     $('#container').html(view.render().el)
 

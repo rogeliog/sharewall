@@ -15,6 +15,8 @@ body{
   background:#fff;
   padding:20px;
   margin-top:-3px;
+  min-width:370px;
+  width:370px;
   padding-top:20px;
   border:1px solid #aaa;
   -webkit-border-bottom-right-radius: 15px;
@@ -26,8 +28,12 @@ body{
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.40);
   -moz-box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.40);
   -webkit-box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.40);
-
 }
+
+  form#new_link{
+    #new_link_url{ width:260px; }
+    #new_link_submit{ width:96px; }
+  }
 h1{
   text-align:center;
   padding-bottom:10px;
