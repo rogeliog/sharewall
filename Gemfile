@@ -23,6 +23,8 @@ gem 'jquery-rails'
 gem 'backbone-on-rails'
 gem 'twitter-bootstrap-rails'
 gem 'rest-client'
+gem 'innsights', :github => "innku/innsights-gem"
+
 
 gem 'omniauth-github'
 

@@ -17,6 +17,7 @@ class LinksController < ApplicationController
   def add_click
     link = Link.find(params[:id])
     link.add_click!
+    Innsights.report('Link Clicked', user: current_user).run
     respond_with link
   end
 end

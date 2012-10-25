@@ -16,3 +16,4 @@
 /config/application.yml
 /config/app_config.yml
 .rbenv-version
+config/innsights.yml
