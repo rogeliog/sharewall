@@ -1,10 +1,19 @@
 require 'spec_helper'
 
 describe 'User Link wall' do
+  let(:user){stub(id: 1, name: 'Chino')}
   before do
-    VCR.use_cassette(:github_link)    { @github = Link.create! url: 'http://github.com' }
-    VCR.use_cassette(:heroku_link)    { @heroku = Link.create! url: 'http://heroku.com' }
-    VCR.use_cassette(:peepcode_link)  { @peepcode = Link.create! url: 'http://peepcode.com' }
+    VCR.use_cassette(:github_link)    { @github = Link.create!( 
+                                                  url: 'http://github.com',
+                                                  user_id: user.id)}
+    VCR.use_cassette(:heroku_link)    { @heroku = Link.create!(
+                                                  url: 'http://heroku.com',
+                                                  user_id: user.id)}
+    VCR.use_cassette(:peepcode_link)  { @peepcode = Link.create!(
+                                                  url: 'http://peepcode.com',
+                                                  user_id: user.id)}
+   visit root_path 
+   click_on 'signin'
   end
 
   it 'User can add a new link', js: true do
@@ -26,7 +35,8 @@ describe 'User Link wall' do
   end
   it 'When a link is clicked the count it updated', js: true do
     Link.destroy_all
-    VCR.use_cassette(:google_link) { @l = Link.create! url: 'http://google.com' }
+    VCR.use_cassette(:google_link) { @l = Link.create! url: 'http://google.com',
+                                                       user_id: user.id}
     visit root_path
     within('#links .count') {page.should have_content('0')}
     click_on @l.title

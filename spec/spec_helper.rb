@@ -19,11 +19,24 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
   end
 
+  config.before(:all) do
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:github] =  OmniAuth::AuthHash.new({
+      'provider'=>'github',
+      'uid'=>'123456',
+      'info'=>{'nickname'=>'rogeliog'}
+    })
+  end
+
   config.before(:each) do
     DatabaseCleaner.start
   end
 
   config.after(:each) do
     DatabaseCleaner.clean
+  end
+
+  config.after(:all) do
+    OmniAuth.config.test_mode = false
   end
 end

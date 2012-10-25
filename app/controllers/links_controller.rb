@@ -11,7 +11,7 @@ class LinksController < ApplicationController
   end
 
   def create
-    respond_with Link.create(params[:link])
+    respond_with Link.create(params[:link].merge(user_id: current_user.id))
   end
 
   def add_click

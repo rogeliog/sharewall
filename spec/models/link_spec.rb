@@ -1,28 +1,37 @@
 require File.expand_path("../../../lib/oembed.rb", __FILE__)
 require 'rspec/autorun'
 require 'spec_helper'
- 
+
 describe Link do
-  let(:link){Link.create url: 'http://google.com'}
+  let(:link){Link.create url: 'http://google.com', user_id: 1}
   let!(:response){
     "{\"provider_url\": \"http://www.google.com\", \"description\": \"Search the world's information, including webpages, images, videos and more. Google has many special features to help you find exactly what you're looking for.\", \"title\": \"Google\", \"url\": \"http://www.google.com\", \"thumbnail_width\": 275, \"thumbnail_url\": \"http://www.google.com/intl/en_ALL/images/srpr/logo1w.png\", \"version\": \"1.0\", \"provider_name\": \"Google\", \"type\": \"link\", \"thumbnail_height\": 95}"
   }
   before { Oembed.stub!(:fetch) { response } } 
   describe 'Validations' do
-    it 'is valid with the proper attributes' do
-      link.valid?
-      link.should be_valid
+    context 'is valid' do
+      it 'with the proper attributes' do
+        link.valid?
+        link.should be_valid
+      end
     end
-    it 'is invalid without a url' do
-      link.url = nil
-      link.should_not be_valid
-    end
-    it 'is invalid with a duplicated url' do
-      Link.create(url: link.url).should_not be_valid
-    end
-    it 'is invalid badly formated url' do
-      link.url = "notvlaiss"
-      link.should_not be_valid
+    context 'is invalid' do
+      it 'without a url' do
+        link.url = nil
+        link.should_not be_valid
+      end
+
+      it 'without a user_id' do
+        link.user_id = nil
+        link.should_not be_valid
+      end
+      it 'with a duplicated url' do
+        Link.create(url: link.url).should_not be_valid
+      end
+      it 'with a badly formated url' do
+        link.url = "notvalid"
+        link.should_not be_valid
+      end
     end
   end
 

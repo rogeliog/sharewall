@@ -1,9 +1,14 @@
 include Oembed
 
 class Link < ActiveRecord::Base
-  attr_accessible :url, :click_count
+  attr_accessible :url, :click_count, :user_id
 
-  validates :url, presence: true, uniqueness: true, format: {with: /^(http(s?):\/\/(www\.)?|(www\.)?)\w+\.\D{2,}.*$/i }
+  belongs_to :user
+
+  validates :url, presence: true, uniqueness: true, 
+                  format: {with: /^(http(s?):\/\/(www\.)?|(www\.)?)\w+\.\D{2,}.*$/i }
+
+  validates :user_id, presence: true
 
   before_validation :format_url, if: :url?
   before_validation :set_attribures_from_json, on: :create
