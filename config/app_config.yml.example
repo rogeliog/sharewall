@@ -1,0 +1,3 @@
+development:
+  github_token: '123456'
+  github_secret: '123456'

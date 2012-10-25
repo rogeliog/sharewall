@@ -24,6 +24,8 @@ gem 'backbone-on-rails'
 gem 'twitter-bootstrap-rails'
 gem 'rest-client'
 
+gem 'omniauth-github'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'debugger'
