@@ -13,4 +13,8 @@ Innsights.setup do
      user    :user
      upon    :after_create
    end
+
+  config :test do
+    enable :false
+  end
 end
