@@ -1,2 +1,7 @@
-<a href="#" ><%= @link.get('title')%>
-<span class='count pull-right'><%= @link.get('click_count')%></span></a>
+<a class='link_anchor' href="#" >
+<img src='<%=@h.user().image_url%>' rel="tooltip" title="<%= @h.user().name%>"/>
+<%= @link.get('title')%>
+<span class='count pull-right'><%= @link.get('click_count')%></span>
+<div class='clearfix'></div>
+</a>
+

@@ -19,6 +19,17 @@ class Link < ActiveRecord::Base
     increment! :click_count
   end
 
+  def as_json(options={})
+    {
+      id: id,
+      title: title,
+      url: url,
+      created_at: created_at,
+      click_count: click_count, 
+      user: user
+    }
+  end
+
 
   private
 
