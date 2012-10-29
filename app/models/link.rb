@@ -1,7 +1,7 @@
-include Oembed
-
+require_relative '../../lib/oembed_link_parser.rb'
 class Link < ActiveRecord::Base
-  attr_accessible :url, :click_count, :user_id
+  attr_accessible :url, :click_count, :user_id, :provider_url, :title, 
+                  :description, :thumbnail_url, :provider_name, :html, :link_type
 
   belongs_to :user
 
@@ -19,28 +19,20 @@ class Link < ActiveRecord::Base
     increment! :click_count
   end
 
+
+  private
+
   def format_url
     self.url = "http://#{self.url}" unless self.url.start_with?("http") 
   end
 
+  def set_attribures_from_json 
+    assign_attributes(fetch_url_info) 
+  end
+
   def fetch_url_info
     return false unless self.url.present?
-    Oembed.fetch(self.url)
+    OembedLinkParser.new(self.url).clean_response
   end
 
-  def set_attribures_from_json 
-    json = JSON.parse(fetch_url_info)
-    attrs.each {|a| self.public_send "#{a}=".to_sym, json[a]}
-    special_attr.each { |k,v| self.public_send "#{v}=".to_sym, json[k] }
-  end
-
-  private
-
-  def attrs
-    [ 'provider_url', 'provider_name', 'title', 'description', 'url', 'thumbnail_url', 'provider_name', 'html']
-  end
-
-  def special_attr
-    {'type' => 'link_type'}
-  end
 end
