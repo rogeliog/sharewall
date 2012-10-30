@@ -1,7 +1,6 @@
 <h1>Share Wall</h1>
 <% if Wall.currentUser()? : %>
 <div id='signout'>
-  <img src='<%= Wall.currentUser().image_url%>' />
   <%= Wall.currentUser().name%>
   <a href='/signout' class='session_link btn' > Sign out</a>
 </div>

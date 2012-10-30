@@ -26,7 +26,7 @@ class Link < ActiveRecord::Base
       url: url,
       created_at: created_at,
       click_count: click_count, 
-      user: user
+      user: user.as_json
     }
   end
 
