@@ -1,5 +1,5 @@
 require_relative '../../lib/oembed_link_parser.rb'
-require 'spec_helper'
+require 'spec_helper_unit'
 
 describe OembedLinkParser do
   subject{OembedLinkParser.new "http://google.com"}

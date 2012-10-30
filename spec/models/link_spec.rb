@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'spec_helper_model'
 
 describe Link do
   let(:link){Link.create url: 'http://google.com', user_id: 1}
