@@ -34,7 +34,6 @@ group :development, :test do
   gem 'jasminerice'
   gem 'rspec-rails'
   gem 'capybara'
-  gem "guard-rspec"
   gem "guard-jasmine"
   gem 'database_cleaner'
   gem 'vcr'

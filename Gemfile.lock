@@ -100,8 +100,6 @@ GEM
       guard (>= 1.1.0)
       multi_json
       thor
-    guard-rspec (0.4.3)
-      guard (>= 0.4.0)
     haml (3.1.6)
     hashie (1.2.0)
     highline (1.6.15)
@@ -263,7 +261,6 @@ DEPENDENCIES
   debugger
   fakeweb
   guard-jasmine
-  guard-rspec
   innsights!
   jasminerice
   jquery-rails
