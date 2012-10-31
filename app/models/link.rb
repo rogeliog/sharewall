@@ -5,8 +5,8 @@ class Link < ActiveRecord::Base
 
   belongs_to :user
 
-  validates :url, presence: true, uniqueness: true, 
-                  format: {with: /^(http(s?):\/\/(www\.)?|(www\.)?)\w+\.\D{2,}.*$/i }
+  validates :url, presence: true, uniqueness: true
+                  #format: {with: /^(http(s?):\/\/(www\.)?|(www\.)?)\w+\.\D{2,}.*$/i }
 
   validates :user_id, presence: true
 
