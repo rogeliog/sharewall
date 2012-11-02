@@ -7,11 +7,12 @@ class Wall.Views.LinksIndex extends Backbone.View
   initialize: ->
     @collection.on('reset', @render, this)
     @collection.on('add', @prependLink, this)
+    @collection.on('change:filter', @render, this)
     $('#order_selector').button()
 
   render: ->
     $(@el).html("")
-    @collection.each(@prependLink)
+    @prependLink(link) for link in @collection.filter()
     this
   
   prependLink: (link) =>

@@ -6,6 +6,7 @@ class Wall.Views.Main extends Backbone.View
     'submit #new_link':'createLink'
     'click #popular_trigger':'sortByPopularity'
     'click #recent_trigger':'sortByRecent'
+    'change #date_selector':'filterCollection'
  
   render: ->
     $(@el).html(@template())
@@ -22,7 +23,6 @@ class Wall.Views.Main extends Backbone.View
     $("#links").prepend("<li id='loading'><a>Loading...</a></li>")
     @collection.createWith attributes
 
-
   sortByPopularity: (event) =>
     event.preventDefault() if event
     $(@el).find('.sorter').removeClass('active')
@@ -34,6 +34,12 @@ class Wall.Views.Main extends Backbone.View
     $(@el).find('.sorter').removeClass('active')
     $(@el).find('#recent_trigger').addClass('active')
     @collection.sortByRecent()
+
+  filterCollection: (event) =>
+    event.preventDefault() if event
+    filter = $(event.target).find('option:selected').val()
+    @collection.updateFilter filter
+
 
 
 

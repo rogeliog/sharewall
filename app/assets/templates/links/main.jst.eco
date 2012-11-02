@@ -16,8 +16,17 @@
 <a href='/auth/github' class='session_link btn ' id='signin'>Sign in with github</a>
 <% end%>
 
-<div class='span4 btn-group' id='order_selector' data-toggle='buttons-radio'>
-<button class='btn sorter' id='popular_trigger'>Popular</button>
-<button class='btn sorter active' id='recent_trigger'>Recent</button>
+<div id='filter_wrapper'>
+  <div class='span4 btn-group' id='order_selector' data-toggle='buttons-radio'>
+  <button class='btn sorter' id='popular_trigger'>Popular</button>
+  <button class='btn sorter active' id='recent_trigger'>Recent</button>
+  </div>
+  <div id='date_selector_wrapper'>
+  <select id='date_selector'>
+  <option value='weekly'>Last 7 days</a>
+  <option value='monthly'>Last 30 days</a>
+  <option value='all'>All Time</a>
+  </select>
+  </div>
 </div>
 <div id='links-wrapper'></div>
