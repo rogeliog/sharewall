@@ -1,4 +1,6 @@
-describe 'Link View', ->
+#= require spec_helper
+
+describe 'Wall.Views.Link', ->
   beforeEach ->
     @spies = []
     @model = new Backbone.Model(url: "someUrl")
@@ -9,20 +11,19 @@ describe 'Link View', ->
 
   describe 'Init', ->
     it 'has a li as a tag name', ->
-      expect(@view.el.nodeName).toEqual('LI')
+      @view.el.nodeName.should.equal('LI')
 
     it 'has a link class', ->
-      expect($(@view.el).hasClass('link')).toEqual(true)
+      $(@view.el).hasClass('link').should.equal(true)
 
   describe 'Events', ->
     describe '#click', ->
       beforeEach ->
         @view = new Wall.Views.Link()
-        sinon.spy(@view, 'handleClick')
+        @clickSpy = sinon.spy(@view, 'handleClick')
         @view.trigger("click")
 
-      xit 'handles the click', ->
-        expect(@view.handleClick).toHaveBeenCalledOnce()
+      it 'handles the click'
 
   describe 'Methods', ->
     describe 'handelClick', ->
@@ -34,8 +35,8 @@ describe 'Link View', ->
 
       it 'updates the click_count', ->
         @view.handleClick()
-        expect(@view.model.addClick).toHaveBeenCalledOnce()
+        sinon.assert.calledOnce @addClickSpy
 
       it 'Navigates to the desired url', ->
         @view.handleClick()
-        expect(@view.model.goToUrl).toHaveBeenCalled()
+        sinon.assert.calledOnce @goToUrlSpy

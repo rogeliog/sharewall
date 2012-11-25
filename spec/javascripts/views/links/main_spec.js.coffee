@@ -1,3 +1,5 @@
+#= require spec_helper
+
 describe 'Innsights.Views.Main', ->
   beforeEach ->
     @spies = []
@@ -17,7 +19,7 @@ describe 'Innsights.Views.Main', ->
 
       it 'creates a model on the collection', ->
         @view.createLink()
-        expect(@view.collection.create).toHaveBeenCalled()
+        sinon.assert.calledOnce @createSpy
 
     describe 'sortByPopularity', ->
       beforeEach ->
@@ -27,5 +29,5 @@ describe 'Innsights.Views.Main', ->
 
       it 'Sorts the collection by popularity', ->
         @view.sortByPopularity()
-        expect(@view.collection.sortByPopularity).toHaveBeenCalled()
+        sinon.assert.calledOnce @popularSpy
 

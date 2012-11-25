@@ -1,10 +1,13 @@
-describe 'Links View', ->
+#= require spec_helper
+
+describe 'Wall.Views.LinksIndex', ->
   beforeEach ->
     @spies = []
-    @link1 = new Backbone.Model()
-    @link2 = new Backbone.Model()
+    @link1 = new Wall.Models.Link()
+    @link2 = new Wall.Models.Link()
     @collection = new Wall.Collections.Links([@link1, @link2])
     @view = new Wall.Views.LinksIndex(collection: @collection)
+
   afterEach ->
     spy.restore for spy in @spies
 
@@ -20,9 +23,6 @@ describe 'Links View', ->
         window.Wall.Views.Link.restore()
 
       it 'Returns the view object', ->
-        expect(@view.render()).toEqual(@view)
+        @view.render().should.equal @view
 
-      it 'create a link view for every link', ->
-        expect(@linkViewStub).toHaveBeenCalledTwice()
-
-
+      it 'create a link view for every link'

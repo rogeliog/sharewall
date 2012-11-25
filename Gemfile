@@ -31,10 +31,9 @@ gem 'omniauth-github'
 group :development, :test do
   gem 'sqlite3'
   gem 'debugger'
-  gem 'jasminerice'
   gem 'rspec-rails'
   gem 'capybara'
-  gem "guard-jasmine"
+  gem 'konacha'
   gem 'database_cleaner'
   gem 'vcr'
   gem 'fakeweb'
