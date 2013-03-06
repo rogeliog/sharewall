@@ -3,9 +3,7 @@ class Wall.Models.Link extends Backbone.Model
   addClick: ->
     url = "/links/#{@id}/add_click"
     $.post url, (j) =>
-
-  goToUrl: ->
-    window.location = @get('url')
+      @set('click_count', parseInt(@get('click_count')) + 1)
   
   weekly: ->
     @_daysAgo(7+1).getTime() < new Date(@get('created_at')).getTime()
