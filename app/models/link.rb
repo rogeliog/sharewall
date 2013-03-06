@@ -15,6 +15,9 @@ class Link < ActiveRecord::Base
 
   default_scope order('created_at')
 
+  scope  :recent, lambda { where('created_at > ?', 1.week.ago) } 
+  scope  :popular, order('click_count DESC')
+  
   def add_click!
     increment! :click_count
   end
@@ -29,7 +32,6 @@ class Link < ActiveRecord::Base
       user: user.as_json
     }
   end
-
 
   private
 

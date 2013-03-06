@@ -1,0 +1,32 @@
+<h1 style='color:#274257;font-family: Tahoma, Arial, sans-serif'>This week on Share Wall</h1>
+
+<table border='0' cellspacing='0'>
+    <tr>
+      <td style='padding:10px'>
+        <img src='<%= @top_link.user.image_url<< "&s=60" %>' />
+      </td>
+      <td style='padding:10px'>
+        <%= link_to truncate(@top_link.title, length: 60), @top_link.url, style: 'font-size:22px;color:#274257;font-family: Tahoma, Arial, sans-serif'%>
+      </td>
+      <td style='padding:10px'>
+        <span style='font-size:22px;font-family: Arial, sans-serif'><%= @top_link.click_count %> clicks</span>
+      </td>
+    </tr>
+  <% @links.each do |link| %>
+    <tr>
+      <td style='padding:10px'>
+        <img src='<%= link.user.image_url<< "&s=40" %>' />
+      </td>
+      <td style='padding:10px'>
+        <%= link_to truncate(link.title, length: 60), link.url, style: 'font-size:20px;color:#274257;font-family: Arial, sans-serif'%>
+      </td>
+      <td style='padding:10px'>
+        <span style='font-size:22px;font-family: Arial, sans-serif'><%= link.click_count %> clicks</span>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<h2 style='color:#274257;font-family: Tahoma, Arial, sans-serif;'>
+  <a href='http://sharewall.herokuapp.com' style='color:#274257'>Keep on sharing!</a>
+</h2>
