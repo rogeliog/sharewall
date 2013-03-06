@@ -1,3 +1,10 @@
+<% if @shouldRenderFlash() : %>
+  <div class="alert alert-success">
+    Your information was edited successfully
+    <button type="button" data-dismiss="alert" class="close">×</button>
+  </div>
+<% end %>
+
 <form id='new_link'>
   <div class="controls">
     <div class="input-append">

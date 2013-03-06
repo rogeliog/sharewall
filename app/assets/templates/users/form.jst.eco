@@ -1,0 +1,21 @@
+<section class='user_form'>
+  <h2>Preferences</h2>
+  <div class="alert alert-error" style='display:none;'>
+    Please fix your e-mail and try again
+    <button type="button" class="close">×</button>
+  </div>
+  <form id='edit_user'>
+    <label for='user_email'>E-mail</label>
+    <input type='text' name='user[email]' id='user_email' value="<%= current_user.get('email') %>" />
+    <ul class='preferences'>
+      <li>
+        <input type='checkbox' name='user[preferences][newsletter]' id='user_preferences_newsletter' 
+          <%= @checkedPreference('newsletter') %> /> 
+        <label for='user_preferences_newsletter' >
+          Get weekly E-mail with popular links
+        </label>
+      </li>
+    </ul>
+    <input type='submit' class='btn btn-primary' value='Save'>
+  </form>
+</section>

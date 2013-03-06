@@ -5,7 +5,7 @@ window.Wall =
   Routers: {}
 
   init: ->
-    new Wall.Routers.Links()
+    window.app = new Wall.Routers.Links()
     Backbone.history.start()
 
   currentUser: ->

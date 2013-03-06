@@ -8,9 +8,7 @@
 </head>
 <body>
 <script type="text/javascript">
-  window.current_user_id = ("<%= session[:user_id]%>");
-  window.current_user_name = ("<%= session[:user_name]%>");
-  window.current_user_image_url = ("<%= session[:user_image_url]%>");
+  window.current_user = new Wall.Models.User(<%= current_user.to_json.to_s.html_safe %>);
 </script>
 
   <div id='wrapper' class='span4'>

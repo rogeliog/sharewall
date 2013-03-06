@@ -35,11 +35,10 @@ describe 'User Link wall' do
   end
   it 'When a link is clicked the count it updated', js: true do
     Link.destroy_all
-    VCR.use_cassette(:google_link) { @l = Link.create! url: 'http://google.com',
-                                                       user_id: user.id}
+    VCR.use_cassette(:google_link) { @l = Link.create! url: 'http://google.com', user_id: user.id}
     visit root_path
     within('#links .count') {page.should have_content('0')}
-    click_on @l.title
+    click_link @l.title
     visit root_path
     within('#links .count') {page.should have_content('1')}
   end

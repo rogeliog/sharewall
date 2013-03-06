@@ -97,3 +97,15 @@ form#new_link{
   float:none;
 }
 
+.user_form{
+  ul{
+    list-style-type:none;
+    padding:0;
+    margin:0 0 10px 0;
+    label{
+      display:inline;
+      margin:0;
+    }
+  }
+}
+

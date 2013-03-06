@@ -9,7 +9,7 @@ class Wall.Views.Main extends Backbone.View
     'change #date_selector':'filterCollection'
  
   render: ->
-    $(@el).html(@template())
+    $(@el).html(@template(@helpers()))
     @renderLinks()
     this
   
@@ -39,6 +39,10 @@ class Wall.Views.Main extends Backbone.View
     event.preventDefault() if event
     filter = $(event.target).find('option:selected').val()
     @collection.updateFilter filter
+
+  helpers: ->
+    shouldRenderFlash: =>
+      @options.success
 
 
 

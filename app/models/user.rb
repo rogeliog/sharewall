@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :id, :image_url, :email, :preferences
   serialize :preferences, Hash
 
-  validates :email, email_format: true, allow_nil: true
+  validates :email, email_format: true, allow_nil: true, uniqueness: true
   has_many  :links
 
   # Set here because serialized db defaults do not work
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
       user.uid = auth["uid"]
       user.email = auth["info"]["email"]
       user.name = auth["info"]["nickname"]
-      user.image_url = auth[:extra][:raw_info][:avatar_url]
+      user.image_url = auth["extra"]["raw_info"]["avatar_url"]
     end
   end
 
