@@ -19,25 +19,26 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
 gem 'backbone-on-rails'
 gem 'twitter-bootstrap-rails'
 gem 'rest-client'
 gem 'innsights', :github => "innku/innsights-gem"
 
 
-gem 'omniauth-github'
+gem 'omniauth-github', '~> 1.0.1'
 
 group :development, :test do
   gem 'sqlite3'
   gem 'debugger'
   gem 'rspec-rails'
-  gem 'capybara'
+  gem 'capybara', "~> 1.0"
   gem 'konacha'
   gem 'database_cleaner'
   gem 'vcr'
   gem 'fakeweb'
   gem 'parallel_tests'
+  gem 'launchy'
+  gem "letter_opener"
 end
 
 group :production do

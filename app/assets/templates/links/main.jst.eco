@@ -1,9 +1,10 @@
-<h1>Share Wall</h1>
-<% if Wall.currentUser()? : %>
-<div id='signout'>
-  <%= Wall.currentUser().name%>
-  <a href='/signout' class='session_link btn' > Sign out</a>
-</div>
+<% if @shouldRenderFlash() : %>
+  <div class="alert alert-success">
+    Your information was edited successfully
+    <button type="button" data-dismiss="alert" class="close">×</button>
+  </div>
+<% end %>
+
 <form id='new_link'>
   <div class="controls">
     <div class="input-append">
@@ -12,9 +13,6 @@
     </div>
   </div>
 </form>
-<% else : %>
-<a href='/auth/github' class='session_link btn ' id='signin'>Sign in with github</a>
-<% end%>
 
 <div id='filter_wrapper'>
   <div class='span4 btn-group' id='order_selector' data-toggle='buttons-radio'>

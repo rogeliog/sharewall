@@ -8,12 +8,21 @@
 </head>
 <body>
 <script type="text/javascript">
-  window.current_user_id = ("<%= session[:user_id]%>");
-  window.current_user_name = ("<%= session[:user_name]%>");
-  window.current_user_image_url = ("<%= session[:user_image_url]%>");
+  window.current_user = new Wall.Models.User(<%= current_user.to_json.to_s.html_safe %>);
 </script>
 
   <div id='wrapper' class='span4'>
+    <header id='main'>
+      <h1><a href='#/'>Share Wall</a></h1>
+      <div class='log'>
+        <% if current_user %>
+          <%= link_to current_user.name, "#/users/#{current_user.name}" %> | 
+          <a href='/signout'> Sign out</a>
+        <% else %>
+          <a href='/auth/github' class='session_link btn ' id='signin'>Sign in with github</a>
+        <% end%>
+      </div>
+    </header>  
     <div id='container'>
       <%= yield %>
     </div>

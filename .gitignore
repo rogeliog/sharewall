@@ -17,3 +17,4 @@
 /config/app_config.yml
 .rbenv-version
 config/innsights.yml
+.DS_Store
