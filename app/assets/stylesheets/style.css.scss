@@ -36,14 +36,20 @@ form#new_link{
 }
 
 .link{
-  a.link_anchor{
-    display:block;
+  .link_anchor{
+    border: 1px solid #ddd;
+    border-radius: 4px 4px 0 0;
+    padding: 8px;
     img{
       width:25px;
       display:block;
       float:left;
       padding-right:5px;
   }
+}
+
+.clickable {
+  cursor:pointer;
 }
 }
 #filter_wrapper{
