@@ -3,8 +3,9 @@
 describe 'Wall.Views.Link', ->
   beforeEach ->
     @spies = []
-    @model = new Backbone.Model(url: "someUrl")
+    @model = new Wall.Models.Link(url: "someUrl")
     @view = new Wall.Views.Link(model: @model)
+    sinon.stub(@model, 'save').returns(true)
 
   afterEach ->
     spy.restore for spy in @spies
@@ -26,17 +27,42 @@ describe 'Wall.Views.Link', ->
       it 'handles the click'
 
   describe 'Methods', ->
-    describe 'handelClick', ->
-      beforeEach ->
-        @linkModel = new Wall.Models.Link()
-        @addClickSpy = sinon.spy(@linkModel, 'addClick')
-        @goToUrlSpy = sinon.stub(@linkModel, 'goToUrl')
-        @view.model = @linkModel
-
+    describe 'handleClick', ->
       it 'updates the click_count', ->
+        addClickSpy = sinon.spy(@model, 'addClick')
         @view.handleClick()
-        sinon.assert.calledOnce @addClickSpy
+        sinon.assert.calledOnce addClickSpy
+        addClickSpy.restore
 
-      it 'Navigates to the desired url', ->
-        @view.handleClick()
-        sinon.assert.calledOnce @goToUrlSpy
+    describe 'goToUrl', ->
+      xit 'Sets window location to move to another page', ->
+
+    describe 'editLinkWithFocusout', ->
+      it 'calls edit link method when focousout has been triggered', ->
+        spy = sinon.spy(@view,  '_editLink')
+        @view.editLinkWithFocusout()
+        sinon.assert.calledOnce spy
+        spy.restore
+
+    describe 'editLinkWithKeyboardEvent', ->
+      beforeEach ->
+        @spy = sinon.spy(@view, '_editLink')
+
+      it 'calls edit link method when the keycode corresponds to the ENTER key', ->
+        @view.editLinkWithKeyboardEvent({keyCode: 13})
+        sinon.assert.calledOnce @spy
+
+      it 'doesnt edit link when the keycode is different to the ENTER key', ->
+        @view.editLinkWithKeyboardEvent({keyCode: 65})
+        @spy.callCount.should.equal(0)
+
+      afterEach ->
+        @spy.restore
+
+    describe 'handleEditingLink', ->
+      it 'toggles the visibility for the input field in the form', ->
+        spy = sinon.spy(@view, '_toggleInputVisibility')
+        @view.handleEditingLink()
+        sinon.assert.calledOnce spy
+        spy.restore
+

@@ -1,7 +1,13 @@
-<a class='link_anchor' href="#" >
-<img src='<%=@h.user().image_url%>' rel="tooltip" title="<%= @h.user().name%>"/>
-<%= @link.get('title')%>
-<span class='count pull-right'><%= @link.get('click_count')%></span>
-<div class='clearfix'></div>
-</a>
+<div class='link_anchor'>
+  <img src='<%=@h.user().image_url%>' rel="tooltip" title="<%= @h.user().name%>"/>
+  <a class='js-link-title-value' href='#'><%= @link.get('title')%></a>
+  <% if @link.isOwnedByCurrentUser() : %>
+  <input class='js-link-title-input hide' value='<%= @link.get('title')%>' />
+  <span class='tools'>
+    <i class="icon-pencil clickable"></i>
+  </span>
+  <% end %>
+  <span class='count pull-right'><%= @link.get('click_count')%></span>
+  <div class='clearfix'></div>
+</div>
 

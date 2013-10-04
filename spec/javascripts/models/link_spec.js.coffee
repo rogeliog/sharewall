@@ -43,4 +43,17 @@ describe 'Wall.Models.Link', ->
         @link.set('created_at', @date.getTime())
         @link.monthly().should.equal false
 
+    describe '#isOwnedByCurrentUser', ->
+      beforeEach ->
+        @current_user = new Wall.Models.User({id: 1, name: 'Charlie Slim'})
+        window.current_user = @current_user
+      it 'True when the link was created by the current user', ->
+        @link.set('user', @current_user)
+        @link.isOwnedByCurrentUser().should.equal true
+
+      it 'False when it was not created by the current user', ->
+        @link.set('user', new Wall.Models.User({id: 999, name: 'Mr. T'}))
+        @link.isOwnedByCurrentUser().should.equal(false)
+
+
 
